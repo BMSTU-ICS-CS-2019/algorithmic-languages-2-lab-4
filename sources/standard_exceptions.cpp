@@ -6,9 +6,9 @@
 
 namespace standard_exceptions {
 
-    ExceptionNotThrownException::ExceptionNotThrownException(char const *const message) : std::runtime_error(std::move(message)) {}
+    ExceptionNotThrownException::ExceptionNotThrownException(char const * const message) : std::runtime_error(std::move(message)) {}
 
-    ExceptionNotThrownException::ExceptionNotThrownException(std::string const &message) : std::runtime_error(std::move(message)) {}
+    ExceptionNotThrownException::ExceptionNotThrownException(std::string const & message) : std::runtime_error(std::move(message)) {}
 
     void cause_out_of_range() {
         std::vector<int> emptyVector = {};
@@ -48,7 +48,7 @@ namespace standard_exceptions {
         };
         class Bar {};
         Foo const foo;
-        Foo const &fooReference = foo;
+        Foo const & fooReference = foo;
         try {
             dynamic_cast<Bar const &>(fooReference);
         } catch (std::bad_cast const &) {
