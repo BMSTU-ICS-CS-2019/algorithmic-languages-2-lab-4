@@ -24,4 +24,4 @@ namespace standard_exceptions {
     void cause_bad_alloc();
 } // namespace standard_exceptions
 
-#endif// INCLUDE_STANDARD_EXCEPTIONS_H_
+#endif // INCLUDE_STANDARD_EXCEPTIONS_H_

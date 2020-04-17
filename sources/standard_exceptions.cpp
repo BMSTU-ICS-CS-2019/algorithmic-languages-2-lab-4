@@ -59,7 +59,7 @@ namespace standard_exceptions {
     }
 
     void cause_bad_alloc() {
-        std::vector<long long const *> pointers;// we don't need memory leaks
+        std::vector<long long const *> pointers; // we don't need memory leaks
         try {
             while (true) pointers.push_back(new long long[SIZE_MAX >> 6]);
         } catch (std::bad_alloc const &) {

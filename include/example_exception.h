@@ -11,4 +11,4 @@ namespace example_exception {
     };
 } // namespace example_exception
 
-#endif//INCLUDE_EXAMPLE_EXCEPTION_H_
+#endif //INCLUDE_EXAMPLE_EXCEPTION_H_

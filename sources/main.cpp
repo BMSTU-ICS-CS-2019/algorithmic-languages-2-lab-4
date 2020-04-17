@@ -8,11 +8,12 @@ int main() {
     std::cout
             << "========== Exceptions ==========\n"
                "1. Docs successfully read\n"
-               "2 / 3:" << std::endl;
+               "2 / 3:"
+            << std::endl;
 
     try {
         standard_exceptions::cause_out_of_range();
-    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -20,7 +21,7 @@ int main() {
 
     try {
         standard_exceptions::cause_length_error();
-    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -28,7 +29,7 @@ int main() {
 
     try {
         standard_exceptions::cause_invalid_argument();
-    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -36,7 +37,7 @@ int main() {
 
     try {
         standard_exceptions::cause_bad_cast();
-    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -44,7 +45,7 @@ int main() {
 
     try {
         standard_exceptions::cause_bad_alloc();
-    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const &e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -52,10 +53,12 @@ int main() {
 
     std::cout << "\t4 / 5:" << std::endl;
     {
-        enum Status { UNCAUGHT, WRONG_MESSAGE, CAUGHT } status = UNCAUGHT;
+        enum Status { UNCAUGHT,
+                      WRONG_MESSAGE,
+                      CAUGHT } status = UNCAUGHT;
         try {
             throw example_exception::ExampleException("Let magic happen");
-        } catch (example_exception::ExampleException const& e) {
+        } catch (example_exception::ExampleException const &e) {
             status = ((strcmp(e.what(), "Let magic happen")) == 0 ? CAUGHT : WRONG_MESSAGE);
         }
         switch (status) {
