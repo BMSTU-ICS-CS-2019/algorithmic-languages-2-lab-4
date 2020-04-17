@@ -11,6 +11,8 @@ namespace standard_exceptions {
 
     public:
         explicit ExceptionNotThrown(std::string &&message);
+
+        const char *what() const noexcept override;
     };
 
     void cause_out_of_range();
@@ -22,6 +24,6 @@ namespace standard_exceptions {
     void cause_bad_cast();
 
     void cause_bad_alloc();
-}
+} // namespace standard_exceptions
 
 #endif// INCLUDE_STANDARD_EXCEPTIONS_H_
