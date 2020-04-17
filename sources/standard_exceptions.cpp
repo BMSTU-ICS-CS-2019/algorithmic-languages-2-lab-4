@@ -1,5 +1,6 @@
 #include <standard_exceptions.h>
 
+#include <algorithm>
 #include <bitset>
 #include <vector>
 
