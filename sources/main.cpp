@@ -2,13 +2,14 @@
 
 #include <cstring>
 #include <example_exception.h>
+#include <raii.h>
 #include <standard_exceptions.h>
 
 int main() {
     std::cout
             << "========== Exceptions ==========\n"
-               "1. Docs successfully read\n"
-               "2 / 3:"
+               "1) Docs successfully read\n"
+               "2 / 3)"
             << std::endl;
 
     try {
@@ -17,7 +18,7 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-    std::cout << "\t2.1 / 3 Works as expected" << std::endl;
+    std::cout << "\t2.1 / 3) Works as expected" << std::endl;
 
     try {
         standard_exceptions::cause_length_error();
@@ -25,7 +26,7 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-    std::cout << "\t2.2 / 3 Works as expected" << std::endl;
+    std::cout << "\t2.2 / 3) Works as expected" << std::endl;
 
     try {
         standard_exceptions::cause_invalid_argument();
@@ -33,7 +34,7 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-    std::cout << "\t2.3 / 3 Works as expected" << std::endl;
+    std::cout << "\t2.3 / 3) Works as expected" << std::endl;
 
     try {
         standard_exceptions::cause_bad_cast();
@@ -41,7 +42,7 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-    std::cout << "\t2.4 / 3 Works as expected" << std::endl;
+    std::cout << "\t2.4 / 3) Works as expected" << std::endl;
 
     try {
         standard_exceptions::cause_bad_alloc();
@@ -49,9 +50,9 @@ int main() {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-    std::cout << "\t2.5 / 3 Works as expected" << std::endl;
+    std::cout << "\t2.5 / 3) Works as expected" << std::endl;
 
-    std::cout << "\t4 / 5:" << std::endl;
+    std::cout << "\t4 / 5):" << std::endl;
     {
         enum Status { UNCAUGHT,
                       WRONG_MESSAGE,
@@ -71,11 +72,35 @@ int main() {
                 return 1;
             }
             case CAUGHT: {
-                std::cout << "\t4 / 5 Works as expected" << std::endl;
+                std::cout << "\t4 / 5) Works as expected" << std::endl;
                 break;
             }
         }
     }
+
+    std::cout
+            << "========== RAII =========="
+            << std::endl;
+    {
+        int const * danglingPointer = nullptr;
+        {
+            raii::RaiiUnfriendly raiiUnfriendly;
+            danglingPointer = raiiUnfriendly.unsafePointer();
+            std::clog << "Value of raiiUnfriendly: " << raiiUnfriendly.value() << std::endl;
+        }
+        delete[] danglingPointer;
+    }
+    std::cout
+            << "1) Should have passed"
+            << std::endl;
+
+    {
+        raii::RaiiFriendly raiiFriendly;
+        std::clog << "Value of raiiFriendly: " << raiiFriendly.value() << std::endl;
+    }
+    std::cout
+            << "2) Should have passed"
+            << std::endl;
 
     return 0;
 }

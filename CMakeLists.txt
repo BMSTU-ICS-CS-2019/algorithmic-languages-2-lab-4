@@ -8,7 +8,7 @@ add_executable(algorithmic_languages_2_lab_4
         sources/standard_exceptions.cpp
         sources/example_exception.cpp
         sources/raii.cpp
-)
+        include/raii.h)
 target_include_directories(algorithmic_languages_2_lab_4
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
