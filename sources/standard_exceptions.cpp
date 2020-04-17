@@ -6,11 +6,9 @@
 
 namespace standard_exceptions {
 
-    ExceptionNotThrown::ExceptionNotThrown(std::string &&message) : message_(std::move(message)) {}
+    ExceptionNotThrownException::ExceptionNotThrownException(char const *const message) : std::runtime_error(std::move(message)) {}
 
-    const char *ExceptionNotThrown::what() const noexcept {
-        return exception::what();
-    }
+    ExceptionNotThrownException::ExceptionNotThrownException(std::string const &message) : std::runtime_error(std::move(message)) {}
 
     void cause_out_of_range() {
         std::vector<int> emptyVector = {};
@@ -20,7 +18,7 @@ namespace standard_exceptions {
             return;
         }
 
-        throw ExceptionNotThrown("std::out_of_range was not thrown");
+        throw ExceptionNotThrownException("std::out_of_range was not thrown");
     }
 
     void cause_length_error() {
@@ -31,7 +29,7 @@ namespace standard_exceptions {
             return;
         }
 
-        throw ExceptionNotThrown("std::length_error was not thrown");
+        throw ExceptionNotThrownException("std::length_error was not thrown");
     }
 
     void cause_invalid_argument() {
@@ -41,7 +39,7 @@ namespace standard_exceptions {
             return;
         }
 
-        throw ExceptionNotThrown("std::invalid_argument was not thrown");
+        throw ExceptionNotThrownException("std::invalid_argument was not thrown");
     }
 
     void cause_bad_cast() {
@@ -57,7 +55,7 @@ namespace standard_exceptions {
             return;
         }
 
-        throw ExceptionNotThrown("std::invalid_argument was not thrown");
+        throw ExceptionNotThrownException("std::invalid_argument was not thrown");
     }
 
     void cause_bad_alloc() {
@@ -70,6 +68,6 @@ namespace standard_exceptions {
         }
 
         for (const auto pointer : pointers) delete[] pointer;
-        throw ExceptionNotThrown("std::bad_alloc was not thrown");
+        throw ExceptionNotThrownException("std::bad_alloc was not thrown");
     }
 } // namespace standard_exceptions

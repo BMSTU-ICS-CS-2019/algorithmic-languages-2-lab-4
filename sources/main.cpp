@@ -12,7 +12,7 @@ int main() {
 
     try {
         standard_exceptions::cause_out_of_range();
-    } catch (standard_exceptions::ExceptionNotThrown const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -20,7 +20,7 @@ int main() {
 
     try {
         standard_exceptions::cause_length_error();
-    } catch (standard_exceptions::ExceptionNotThrown const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -28,7 +28,7 @@ int main() {
 
     try {
         standard_exceptions::cause_invalid_argument();
-    } catch (standard_exceptions::ExceptionNotThrown const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -36,7 +36,7 @@ int main() {
 
     try {
         standard_exceptions::cause_bad_cast();
-    } catch (standard_exceptions::ExceptionNotThrown const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
@@ -44,7 +44,7 @@ int main() {
 
     try {
         standard_exceptions::cause_bad_alloc();
-    } catch (standard_exceptions::ExceptionNotThrown const& e) {
+    } catch (standard_exceptions::ExceptionNotThrownException const& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }

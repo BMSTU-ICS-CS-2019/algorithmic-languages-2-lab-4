@@ -5,14 +5,12 @@
 #include <string>
 
 namespace standard_exceptions {
-    class ExceptionNotThrown final : public std::exception {
-    private:
-        std::string message_;
 
+    class ExceptionNotThrownException final : public std::runtime_error {
     public:
-        explicit ExceptionNotThrown(std::string &&message);
+        explicit ExceptionNotThrownException(char const *message);
 
-        const char *what() const noexcept override;
+        explicit ExceptionNotThrownException(std::string const &message);
     };
 
     void cause_out_of_range();
