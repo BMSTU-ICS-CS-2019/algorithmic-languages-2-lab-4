@@ -82,7 +82,7 @@ int main() {
             << "========== RAII =========="
             << std::endl;
     {
-        int const * danglingPointer = nullptr;
+        int const * danglingPointer;
         {
             raii::RaiiUnfriendly raiiUnfriendly;
             danglingPointer = raiiUnfriendly.unsafePointer();
